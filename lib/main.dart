@@ -1,4 +1,5 @@
 import 'package:advanced_bmi/bmi.dart';
+import 'package:advanced_bmi/startpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: BMI_Calculator(),
+      home: Start(),
     );
   }
 }
