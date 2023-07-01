@@ -104,7 +104,7 @@ class _ResultState extends State<Result> {
                       fontWeight: FontWeight.bold,
                     )),
                     SizedBox(height: 10,),
-                    Text('Ponderal Index :',style: TextStyle(
+                    Text('Ponderal Index : ',style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,

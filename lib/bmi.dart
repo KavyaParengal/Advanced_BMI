@@ -15,7 +15,8 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
   double weight=50;
   double age=20;
   double height=100;
-  late double gender;
+  late int gender;
+  double _value = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,7 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
                         SizedBox(height: 15,),
                         Text('Age',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.pink),),
                         SizedBox(height: 8,),
-                        Text(age.toString(),style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold,color: Colors.black),),
+                        Text(age.toStringAsFixed(0).toString(),style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold,color: Colors.black),),
                         SizedBox(height: 3,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -157,41 +158,51 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
                   children: [
                     Text('Height(cm)',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.pink),),
                     SizedBox(height: 8,),
-                    Text(height.toString(),style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold,color: Colors.black),),
+                    Text(_value.toStringAsFixed(1).toString(),style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold,color: Colors.black),),
                     SizedBox(height: 8,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 40,
-                          height: 40,
-                          child: FloatingActionButton(
-                            child: Icon(Icons.remove,color: Colors.pink,),
-                            backgroundColor: Colors.white,
-                            onPressed: () {
-                              setState(() {
-
-                              });
-                              height--;
-                            },
-                          ),
-                        ),
-                        SizedBox(width: 80,),
-                        Container(
-                          width: 40,
-                          height: 40,
-                          child: FloatingActionButton(
-                            child: Icon(Icons.add,color: Colors.pink,),
-                            backgroundColor: Colors.white,
-                            onPressed: () {
-                              setState(() {
-
-                              });
-                              height++;
-                            },
-                          ),
-                        ),
-                      ],
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     Container(
+                    //       width: 40,
+                    //       height: 40,
+                    //       child: FloatingActionButton(
+                    //         child: Icon(Icons.remove,color: Colors.pink,),
+                    //         backgroundColor: Colors.white,
+                    //         onPressed: () {
+                    //           setState(() {
+                    //
+                    //           });
+                    //           height--;
+                    //         },
+                    //       ),
+                    //     ),
+                    //     SizedBox(width: 80,),
+                    //     Container(
+                    //       width: 40,
+                    //       height: 40,
+                    //       child: FloatingActionButton(
+                    //         child: Icon(Icons.add,color: Colors.pink,),
+                    //         backgroundColor: Colors.white,
+                    //         onPressed: () {
+                    //           setState(() {
+                    //
+                    //           });
+                    //           height++;
+                    //         },
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    Slider(
+                        min: 0,
+                        max: 250,activeColor: Colors.pink,
+                        value: _value,
+                        onChanged: (value){
+                          setState(() {
+                            _value = value;
+                          });
+                        }
                     ),
                   ],
                 ),
@@ -234,7 +245,7 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
                             activeBgColors: [[Colors.pink],[Colors.pink]],
                             onToggle: (index) {
                               print('switched to: $index');
-                              gender=double.parse(index.toString());
+                              gender=int.parse(index.toString());
                             },
                           ),
                           SizedBox(width:10),
@@ -252,7 +263,7 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
             SizedBox(height: 20,),
             GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Result(age:age,weight:weight,height:height,gender: gender)));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Result(age:age,weight:weight,height:_value,gender: gender)));
               },
               child: CircleAvatar(
                 radius: 30,
