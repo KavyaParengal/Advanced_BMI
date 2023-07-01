@@ -19,13 +19,10 @@ class _ResultState extends State<Result> {
     super.initState();
     bmi_calculate();
     bmi_status();
-    //ponderal_index();
   }
   late double bmi;
-  late double ponderal;
   String status='';
   bmi_calculate(){
-    //bmi=widget.weight / (widget.height * widget.height);
     bmi=(widget.weight / widget.height / widget.height ) * 10000;
     print(bmi);
   }
@@ -39,16 +36,6 @@ class _ResultState extends State<Result> {
     else
       status = 'OBESITY';
   }
-
-  // ponderal_index(){
-  //   if(int.parse(widget.age)>=16){
-  //     ponderal= (widget.weight/1000)/ (widget.height*widget.height*widget.height);
-  //   }
-  //   else{
-  //     ponderal= widget.weight/ (widget.height*widget.height*widget.height);
-  //     print(ponderal);
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -103,13 +90,7 @@ class _ResultState extends State<Result> {
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     )),
-                    SizedBox(height: 10,),
-                    Text('Ponderal Index : ',style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    )),
-                    SizedBox(height: 24,),
+                    SizedBox(height: 56,),
                     ElevatedButton(
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>BMI_Calculator()));

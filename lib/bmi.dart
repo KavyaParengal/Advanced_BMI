@@ -206,7 +206,6 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
                     ),
                   ],
                 ),
-
               ),
             ),
             Padding(
@@ -255,7 +254,6 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
                     )
                   ],
                 ),
-
               ),
             ),
             SizedBox(height: 20,),
