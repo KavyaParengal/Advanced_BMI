@@ -1,5 +1,6 @@
 
 import 'package:advanced_bmi/result.dart';
+import 'package:advanced_bmi/startpage.dart';
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
@@ -31,6 +32,10 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
         appBar: AppBar(
           title: Center(child: Text('BMI Calculator',style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold,color: Colors.pink),)),
           backgroundColor: Colors.white,
+          leading: IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>Start()));
+            },
+              icon: Icon(Icons.arrow_back),color: Colors.pink,),
         ),
         body: Column(
           children: [
@@ -160,40 +165,6 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
                     SizedBox(height: 8,),
                     Text(_value.toStringAsFixed(1).toString(),style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold,color: Colors.black),),
                     SizedBox(height: 8,),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     Container(
-                    //       width: 40,
-                    //       height: 40,
-                    //       child: FloatingActionButton(
-                    //         child: Icon(Icons.remove,color: Colors.pink,),
-                    //         backgroundColor: Colors.white,
-                    //         onPressed: () {
-                    //           setState(() {
-                    //
-                    //           });
-                    //           height--;
-                    //         },
-                    //       ),
-                    //     ),
-                    //     SizedBox(width: 80,),
-                    //     Container(
-                    //       width: 40,
-                    //       height: 40,
-                    //       child: FloatingActionButton(
-                    //         child: Icon(Icons.add,color: Colors.pink,),
-                    //         backgroundColor: Colors.white,
-                    //         onPressed: () {
-                    //           setState(() {
-                    //
-                    //           });
-                    //           height++;
-                    //         },
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
                     Slider(
                         min: 0,
                         max: 250,activeColor: Colors.pink,

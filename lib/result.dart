@@ -27,14 +27,15 @@ class _ResultState extends State<Result> {
     print(bmi);
   }
   bmi_status(){
-    if(bmi<18.5)
+    if(bmi<18.5) {
       status = 'UNDER WEIGHT';
-    else if(bmi>=18.5 && bmi<=24.9)
+    } else if(bmi>=18.5 && bmi<=24.9) {
       status = 'NORMAL';
-    else if(bmi>=25 && bmi<=29.9)
+    } else if(bmi>=25 && bmi<=29.9) {
       status = 'OVER WEIGHT';
-    else
+    } else {
       status = 'OBESITY';
+    }
   }
 
   @override
@@ -49,14 +50,22 @@ class _ResultState extends State<Result> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: Center(child: Text('BMI Calculator',style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold,color: Colors.pink),)),
+          title: const Center(
+              child: Text('BMI Calculator',style:
+                TextStyle(fontSize: 23,fontWeight: FontWeight.bold,color: Colors.pink),
+              )
+          ),
           backgroundColor: Colors.white,
+          leading: IconButton(onPressed: (){
+            Navigator.pop(context);
+          },
+            icon: const Icon(Icons.arrow_back),color: Colors.pink,),
         ),
         body: Padding(
           padding: const EdgeInsets.only(left: 10,right: 10),
           child: Column(
             children: [
-              SizedBox(height: 130,),
+              const SizedBox(height: 130,),
               Container(
                 height: MediaQuery.of(context).size.height*0.4,
                 width: MediaQuery.of(context).size.width,
@@ -66,47 +75,47 @@ class _ResultState extends State<Result> {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: 20,),
-                    Text('Your BMI Result',style: TextStyle(
+                    const SizedBox(height: 20,),
+                    const Text('Your BMI Result',style: TextStyle(
                       color: Colors.pink,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     )),
-                    SizedBox(height: 17,),
-                    Text(bmi.toStringAsFixed(1),style: TextStyle(
+                    const SizedBox(height: 17,),
+                    Text(bmi.toStringAsFixed(1),style: const TextStyle(
                       color: Colors.black,
                       fontSize: 34,
                       fontWeight: FontWeight.bold,
                     )),
-                    SizedBox(height: 10,),
-                    Text(status,style: TextStyle(
+                    const SizedBox(height: 10,),
+                    Text(status,style: const TextStyle(
                       color: Colors.green,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     )),
-                    SizedBox(height: 10,),
-                    Text('Normal BMI range : 18.5 - 24.9',style: TextStyle(
+                    const SizedBox(height: 10,),
+                    const Text('Normal BMI range : 18.5 - 24.9',style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     )),
-                    SizedBox(height: 56,),
+                    const SizedBox(height: 56,),
                     ElevatedButton(
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>BMI_Calculator()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const BMI_Calculator()));
                       },
-                      child: Text('Recalculate BMI',style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      )),
                       style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 12.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 12.0),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0)
                           ),
                           primary: Colors.pink[400]
                       ),
+                      child: const Text('Recalculate BMI',style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      )),
                     ),
                   ],
                 ),
